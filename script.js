@@ -22,7 +22,8 @@ function showRandomShape() {
 
 function shapeClicked() {
     const endTime = new Date();
-    const reactionTime = (endTime - startTime) / 1000;
+    // 将反应时间改为毫秒
+    const reactionTime = endTime - startTime; 
     reactionTimes.push(reactionTime);
     this.remove();
 
@@ -39,8 +40,9 @@ function getRandomColor() {
 }
 
 function endGame() {
+    // 计算平均反应时间，精确到毫秒
     const average = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
-    alert(`测试完成！\n平均反应时间：${average.toFixed(2)} 秒`);
+    alert(`测试完成！\n平均反应时间：${average.toFixed(2)} ms`);
     document.getElementById('start-button').classList.remove('hidden');
     reactionTimes = [];
 }
